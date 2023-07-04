@@ -1,25 +1,32 @@
+from turtle import *
 import time
-from playsound import playsound
 
-def workout_timer(total_time, workout_time, rest_time):
-    cycles = total_time // (workout_time + rest_time)
+bgcolor("black")
+t = Turtle()
 
-    for _ in range(cycles):
-        print("Entraînement de {} secondes".format(workout_time))
-        time.sleep(workout_time)
-        play_sound("breath.mp3")
-        print("Repos de {} secondes".format(rest_time))
-        time.sleep(rest_time)
-        play_sound("breath.mp3")
+t.speed(0)
+t.shape("circle")
+t.shapesize(0.3)
+t.width(5)
+t.pu()
+t.goto(0, -200)
+t.pd()
 
-    print("Entraînement terminé !")
+delay(0)
+speed(0)
+ht()
+colors = ["red","tomato","salmon", "orange","gold", "yellow","lime","wheat","olive","green","teal","cyan","coral","aquamarine","skyblue", "blue","indigo","violet", "purple", "white","plum", "pink","orchid"]
 
-def play_sound(sound_file):
-    playsound(sound_file)
-
-# Paramètres de la minuterie Pomodoro pour l'entraînement (en secondes)
-total_time = 600  # Temps total d'entraînement en secondes (10 minutes)
-workout_time = 30  # Durée de l'entraînement en secondes
-rest_time = 10  # Durée du repos en secondes
-
-workout_timer(total_time, workout_time, rest_time)
+countdown = 20
+i= countdown
+while i >= 0:
+    t.color(colors[i % len(colors)])
+    t.clear()
+    t.circle(200, (countdown-i) * 360/countdown)
+    color('white')
+    write(countdown, align='center', font=('Arial', 48, 'bold'))
+    update()
+    time.sleep(1)
+    i -= 1
+    
+done()
