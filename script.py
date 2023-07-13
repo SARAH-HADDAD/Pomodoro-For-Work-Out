@@ -15,22 +15,28 @@ t.width(5)
 t.pu()
 t.goto(0, -200)
 t.pd()
-
+k = Turtle()
+k.penup()
+k.goto(0, 0)  # Position to display the text
+k.pendown()
+k.color("white")
 delay(0)
 speed(0)
 ht()
 colors = ["red","tomato","salmon", "orange","gold", "yellow","lime","wheat","olive","green","teal","cyan","coral","aquamarine","skyblue", "blue","indigo","violet", "purple", "white","plum", "pink","orchid"]
 
 countdown = 20
-i= countdown
+i = countdown
+
 while i >= 0:
     t.color(colors[i % len(colors)])
     t.clear()
-    t.circle(200, (countdown-i) * 360/countdown)
-    color('white')
-    write(countdown, align='center', font=('Arial', 48, 'bold'))
+    t.circle(200, (countdown - i) * 360 / countdown)
+    k.write(i, align='center', font=('Arial', 56, 'bold'))
     update()
     time.sleep(1)
+    k.clear()  # Clear the text
     i -= 1
-play_sound("breath.mp3")    
+
+play_sound("breath.mp3")
 done()
