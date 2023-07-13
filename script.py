@@ -1,53 +1,41 @@
 from turtle import *
 import time
 from playsound import playsound
+import tkinter as tk
+from tkinter import filedialog
+from tkinter import messagebox
 
-def play_sound(sound_file):
-    playsound(sound_file)
+class GUI:
+    def __init__(self, master):
+        self.master = master
+        master.title("Pomodoro Timer for Workout")
+        master.geometry("400x180") # set window size
+        self.workout_time_frame = tk.Frame(master)
+        self.workout_time_label = tk.Label(self.workout_time_frame, text="Workout Time:")
+        self.workout_time_label.pack(side=tk.LEFT)
+        self.workout_time_entry = tk.Entry(self.workout_time_frame)
+        self.workout_time_entry.pack(side=tk.LEFT)
+        self.workout_time_frame.pack(ipadx=15, ipady=15)
 
-bgcolor("black")
-t = Turtle()
+        self.break_time_frame = tk.Frame(master)
+        self.break_time_label = tk.Label(self.break_time_frame, text="Break Time:")
+        self.break_time_label.pack(side=tk.LEFT)
+        self.break_time_entry = tk.Entry(self.break_time_frame)
+        self.break_time_entry.pack(side=tk.LEFT)
+        self.break_time_frame.pack(ipadx=15, ipady=15)
 
-t.speed(0)
-t.shape("circle")
-t.shapesize(0.3)
-t.width(5)
-t.pu()
-t.goto(0, -200)
-t.pd()
-k = Turtle()
-k.penup()
-k.goto(0, 0)  # Position to display the text
-k.pendown()
-k.color("white")
-delay(0)
-speed(0)
-ht()
-colors = ["red","tomato","salmon", "orange","gold", "yellow","lime","wheat","olive","green","teal","cyan","coral","aquamarine","skyblue", "blue","indigo","violet", "purple", "white","plum", "pink","orchid"]
+        self.cycles_frame = tk.Frame(master)
+        self.cycles_label = tk.Label(self.cycles_frame, text="Cycles:")
+        self.cycles_label.pack(side=tk.LEFT)
+        self.cycles_entry = tk.Entry(self.cycles_frame)
+        self.cycles_entry.pack(side=tk.LEFT)
+        self.cycles_frame.pack(ipadx=15, ipady=15)
 
-# Paramètres de la minuterie Pomodoro pour l'entraînement (en secondes)
-workout_time = 30  # Durée de l'entraînement en secondes
-rest_time = 10  # Durée du repos en secondes
-cycles = 10  # Nombre de cycles d'entraînement
-for _ in range(cycles):
-    i = workout_time
-    while i >= 0:
-        t.color(colors[i % len(colors)])
-        t.clear()
-        t.circle(200, (workout_time - i) * 360 / workout_time)
-        k.write(i, align='center', font=('Arial', 64, 'bold'))
-        update()
-        time.sleep(1)
-        k.clear()  # Clear the text
-        i -= 1
-    i = rest_time
-    while i >= 0:
-        t.color("grey")
-        t.clear()
-        t.circle(200, (rest_time - i) * 360 / rest_time)
-        k.write(i, align='center', font=('Arial', 64, 'bold'))
-        update()
-        time.sleep(1)
-        k.clear()
-        i -= 1
-done()
+        #self.start_button = tk.Button(master, text="Start", command=self.start)
+        #self.start_button.pack()
+
+root = tk.Tk()
+gui = GUI(root)
+root.mainloop()
+
+
