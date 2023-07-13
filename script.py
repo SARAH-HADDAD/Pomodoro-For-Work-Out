@@ -26,10 +26,9 @@ ht()
 colors = ["red","tomato","salmon", "orange","gold", "yellow","lime","wheat","olive","green","teal","cyan","coral","aquamarine","skyblue", "blue","indigo","violet", "purple", "white","plum", "pink","orchid"]
 
 # Paramètres de la minuterie Pomodoro pour l'entraînement (en secondes)
-total_time = 600  # Temps total d'entraînement en secondes (10 minutes)
 workout_time = 30  # Durée de l'entraînement en secondes
 rest_time = 10  # Durée du repos en secondes
-cycles = total_time // (workout_time + rest_time)
+cycles = 10  # Nombre de cycles d'entraînement
 for _ in range(cycles):
     i = workout_time
     while i >= 0:
