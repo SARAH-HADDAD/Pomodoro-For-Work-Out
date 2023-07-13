@@ -1,5 +1,9 @@
 from turtle import *
 import time
+from playsound import playsound
+
+def play_sound(sound_file):
+    playsound(sound_file)
 
 bgcolor("black")
 t = Turtle()
@@ -28,5 +32,5 @@ while i >= 0:
     update()
     time.sleep(1)
     i -= 1
-    
+play_sound("breath.mp3")    
 done()
