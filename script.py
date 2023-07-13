@@ -35,7 +35,7 @@ for _ in range(cycles):
         t.color(colors[i % len(colors)])
         t.clear()
         t.circle(200, (workout_time - i) * 360 / workout_time)
-        k.write(i, align='center', font=('Arial', 56, 'bold'))
+        k.write(i, align='center', font=('Arial', 64, 'bold'))
         update()
         time.sleep(1)
         k.clear()  # Clear the text
@@ -45,7 +45,7 @@ for _ in range(cycles):
         t.color("grey")
         t.clear()
         t.circle(200, (rest_time - i) * 360 / rest_time)
-        k.write(i, align='center', font=('Arial', 56, 'bold'))
+        k.write(i, align='center', font=('Arial', 64, 'bold'))
         update()
         time.sleep(1)
         k.clear()
