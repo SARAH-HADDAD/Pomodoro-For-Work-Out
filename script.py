@@ -66,7 +66,7 @@ class GUI:
         break_time = int(self.break_time_entry.get())
         cycles = int(self.cycles_entry.get())
         for _ in range(cycles):
-            sound=playsound("sound1.mp3",block=False)
+            sound_one=playsound("sound1.mp3",block=False)
             i = workout_time
             while i >= 0:
                 t.color(colors[i % len(colors)])
@@ -77,7 +77,7 @@ class GUI:
                 time.sleep(1)
                 k.clear()  # Clear the text
                 i -= 1
-            sound.stop()
+            sound_one.stop()
             i = break_time
             while i >= 0:
                 t.color("grey")
