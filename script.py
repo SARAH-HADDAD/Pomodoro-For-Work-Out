@@ -1,10 +1,15 @@
 from turtle import *
 import time
-from playsound import playsound
+import pygame
 import tkinter as tk
 from tkinter import messagebox
 
+def play_audio(file_path):
+    pygame.mixer.init()
+    pygame.mixer.music.load(file_path)
+    pygame.mixer.music.play(-1)  # -1 means the audio will loop indefinitely
 
+audio_file_path ="sound1.mp3"
 bgcolor("black")
 t = Turtle()
 
@@ -66,8 +71,8 @@ class GUI:
         break_time = int(self.break_time_entry.get())
         cycles = int(self.cycles_entry.get())
         for _ in range(cycles):
-            sound_one=playsound("sound1.mp3",block=False)
             i = workout_time
+            play_audio(audio_file_path)
             while i >= 0:
                 t.color(colors[i % len(colors)])
                 t.clear()
@@ -77,7 +82,7 @@ class GUI:
                 time.sleep(1)
                 k.clear()  # Clear the text
                 i -= 1
-            sound_one.stop()
+            pygame.mixer.music.stop()
             i = break_time
             while i >= 0:
                 t.color("grey")
