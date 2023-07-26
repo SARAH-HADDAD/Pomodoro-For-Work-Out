@@ -9,7 +9,9 @@ def play_audio(file_path):
     pygame.mixer.music.load(file_path)
     pygame.mixer.music.play(-1)  # -1 means the audio will loop indefinitely
 
-audio_file_path ="sound1.mp3"
+audio_workout_time ="sound1.mp3"
+audio_break_time ="sound2.mp3"
+
 bgcolor("black")
 t = Turtle()
 
@@ -72,7 +74,7 @@ class GUI:
         cycles = int(self.cycles_entry.get())
         for _ in range(cycles):
             i = workout_time
-            play_audio(audio_file_path)
+            play_audio(audio_workout_time)
             while i >= 0:
                 t.color(colors[i % len(colors)])
                 t.clear()
@@ -85,6 +87,7 @@ class GUI:
             pygame.mixer.music.stop()
             i = break_time
             while i >= 0:
+                play_audio(audio_break_time)
                 t.color("grey")
                 t.clear()
                 t.circle(200, (break_time - i) * 360 / break_time)
@@ -93,6 +96,7 @@ class GUI:
                 time.sleep(1)
                 k.clear()
                 i -= 1
+            pygame.mixer.music.stop()
         k.write("Done!", align='center', font=('Arial', 64, 'bold'))    
         done()
 
