@@ -73,6 +73,8 @@ class GUI:
         break_time = int(self.break_time_entry.get())
         cycles = int(self.cycles_entry.get())
         for _ in range(cycles):
+            # Record the start time
+            start_time = time.perf_counter()
             i = workout_time
             play_audio(audio_workout_time)
             while i >= 0:
@@ -81,10 +83,15 @@ class GUI:
                 t.circle(200, (workout_time - i) * 360 / workout_time)
                 k.write(i, align='center', font=('Arial', 64, 'bold'))
                 update()
-                time.sleep(1)
+                time.sleep(0.9)
                 k.clear()  # Clear the text
                 i -= 1
             pygame.mixer.music.stop()
+            # Record the end time
+            end_time = time.perf_counter()
+            execution_time = end_time - start_time
+            print(f"The execution time is: {execution_time:.6f} seconds")
+            start_time = time.perf_counter()
             i = break_time
             while i >= 0:
                 play_audio(audio_break_time)
@@ -93,10 +100,13 @@ class GUI:
                 t.circle(200, (break_time - i) * 360 / break_time)
                 k.write(i, align='center', font=('Arial', 64, 'bold'))
                 update()
-                time.sleep(1)
+                time.sleep(0.9)
                 k.clear()
                 i -= 1
             pygame.mixer.music.stop()
+            end_time = time.perf_counter()
+            execution_time = end_time - start_time
+            print(f"The execution time is: {execution_time:.6f} seconds")
         k.write("Done!", align='center', font=('Arial', 64, 'bold'))    
         done()
 
