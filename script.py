@@ -59,6 +59,7 @@ class GUI:
 
         self.start_button = tk.Button(master, text="Start", command=self.start)
         self.start_button.pack()
+        
     def start(self):
         if not self.workout_time_entry.get().isdigit():
             messagebox.showerror("Error", "Workout time must be a number")
