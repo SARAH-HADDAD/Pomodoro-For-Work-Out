@@ -76,8 +76,9 @@ class GUI:
             # Record the start time
             start_time = time.perf_counter()
             i = workout_time
+            execution_time = 0
             play_audio(audio_workout_time)
-            while i >= 0:
+            while execution_time < workout_time:
                 t.color(colors[i % len(colors)])
                 t.clear()
                 t.circle(200, (workout_time - i) * 360 / workout_time)
@@ -86,14 +87,16 @@ class GUI:
                 time.sleep(0.9)
                 k.clear()  # Clear the text
                 i -= 1
+                end_time = time.perf_counter()
+                execution_time = end_time - start_time
             pygame.mixer.music.stop()
             # Record the end time
-            end_time = time.perf_counter()
-            execution_time = end_time - start_time
             print(f"The execution time is: {execution_time:.6f} seconds")
+            
             start_time = time.perf_counter()
             i = break_time
-            while i >= 0:
+            execution_time = 0
+            while execution_time < break_time:
                 play_audio(audio_break_time)
                 t.color("grey")
                 t.clear()
@@ -103,6 +106,8 @@ class GUI:
                 time.sleep(0.9)
                 k.clear()
                 i -= 1
+                end_time = time.perf_counter()
+                execution_time = end_time - start_time
             pygame.mixer.music.stop()
             end_time = time.perf_counter()
             execution_time = end_time - start_time
